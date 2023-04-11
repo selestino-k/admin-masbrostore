@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter,Routes,Route}from "react-router-dom";
+
+import UserorderList from "./components/userorderList.jsx";
+import Adduserorder from "./components/adduserorder.jsx";
+import Edituserorder from "./components/edituserorder.jsx";
+
+import "bulma/css/bulma.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<UserorderList/>}/>
+      <Route path="add" element={<Adduserorder/>}/>
+      <Route path="edit/:id" element={<Edituserorder/>}/>
+
+    </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;
