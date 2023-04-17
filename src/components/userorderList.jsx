@@ -27,7 +27,7 @@ const UserorderList = () => {
         <div className="column is-half">
             <h1>List User </h1>
             <br />
-            <Link to={`add`} className='button is-success'>Add</Link>
+            <Link to={`addorder`} className='button is-success'>Add</Link>
             <table className='table is-striped is-fullwidth'>
                 <thead>
                     <tr>
