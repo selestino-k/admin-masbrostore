@@ -24,10 +24,12 @@ const UserorderList = () => {
     }
   return (
     <div className="columns mt-5 is-centered">
-        <div className="column is-half">
+        <div className="column is-full">
             <h1>List User </h1>
             <br />
             <Link to={`addorder`} className='button is-success'>Add</Link>
+            
+            <br />
             <table className='table is-striped is-fullwidth'>
                 <thead>
                     <tr>

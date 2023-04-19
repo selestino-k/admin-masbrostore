@@ -8,10 +8,7 @@ import {
 import { Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
 
-import { useNavigate } from "react-router-dom";
-
-
-
+import { useNavigate, Outlet} from "react-router-dom";
 
 
   const { Header, Sider, Content } = Layout;
@@ -19,7 +16,7 @@ import { useNavigate } from "react-router-dom";
     const [collapsed, setCollapsed] = useState(false);
     const {
       token: { colorBgContainer },
-    } = theme.useToken();
+      } = theme.useToken();
   const navigate = useNavigate();
     return (
       <Layout>
@@ -88,7 +85,7 @@ import { useNavigate } from "react-router-dom";
           >
             
            
-            
+            <Outlet/>
           </Content>
         </Layout>
       </Layout>

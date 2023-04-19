@@ -14,15 +14,17 @@ function App() {
     <Router>
       <Routes>
         
-        <Route path="order/addorder" element={<Adduserorder/>}/>
-        <Route path="edit/:id" element={<Edituserorder/>}/>
-        <Route path="/games" element={<Gameslist/>}/>
-        <Route path="/order" element={<UserorderList/>}/>
+       
 
 
-        <Route path="/admin" element={<MainLayout/>}>
+        <Route path="/" exact element={<MainLayout/>}>
+          <Route path="dashboard" element={''}/>
+          <Route path="user" element={''}/>
+
           <Route path="games" element={<Gameslist/>}/>
           <Route path="order" element={<UserorderList/>}/>
+          <Route path="order/addorder" element={<Adduserorder/>}/>
+          <Route path="order/editorder" element={<Edituserorder/>}/>
         </Route>
 
       </Routes>

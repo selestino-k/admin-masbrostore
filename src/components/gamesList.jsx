@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+
 
 const Gameslist = () => {
     const [games, setGames] = useState([]);
@@ -13,16 +13,20 @@ const Gameslist = () => {
         const response = await axios.get("http://localhost:5000/games");
         setGames(response.data);
     }
-
-   
+    
   return (
     <>
         <div className="columns mt-5 is-centered">
             
-        <div className="column is-half">
+        <div className="column is-full">
 
             <h1>List Games </h1>
             <br />
+
+           
+
+
+
             <table className='table is-striped is-fullwidth'>
                 <thead>
                     <tr>

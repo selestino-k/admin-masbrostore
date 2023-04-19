@@ -14,7 +14,7 @@ const Adduserorder = () => {
                 Email,
                 Amount,
             });
-            navigate("/");
+            navigate("/order");
         } catch (error){
             console.log(error);
         }
