@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Adduserorder = () => {
     const [Email, setEmail] = useState('');
-    const [Amount, setAmount] = useState('');
+    const [values, setValues] = useState([]);
+    const [setOptions] = useState([]);
+    const [Amount] = useState(setOptions);
+
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch("http://localhost:5000/games").then((data)=>data.json()).then((val)=>setValues(val))
+    }, []);
+    console.log(values,"values : ")
 
     const saveUserorder = async (e) =>{
         e.preventDefault();
@@ -38,13 +47,15 @@ const Adduserorder = () => {
                 <div className="field">
                     <label  className="label"> Amount</label>
                     <div className="control">
-                        <input 
-                        type="text" 
-                        className="input" 
-                        value = {Amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        placeholder='Top up Amount'
-                        />
+                         <div className="select is-link is-full">
+                            <select>
+                                {
+                                    values.map((opt,i)=>(
+                                    <option>{opt.Amount}</option>)
+                                    )
+                                }
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div className="field">

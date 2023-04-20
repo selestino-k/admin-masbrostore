@@ -23,10 +23,6 @@ const Gameslist = () => {
             <h1>List Games </h1>
             <br />
 
-           
-
-
-
             <table className='table is-striped is-fullwidth'>
                 <thead>
                     <tr>
