@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const Adduserorder = () => {
     const [Email, setEmail] = useState('');
     const [values, setValues] = useState([]);
-    const [setOptions] = useState([]);
-    const [Amount] = useState(setOptions);
+    const [GameID,setGameID] = useState('');
+    const [ZoneID,setZoneID] = useState('');
+    const [Amount,setAmount] = useState('');
 
 
     const navigate = useNavigate();
@@ -16,12 +17,23 @@ const Adduserorder = () => {
     }, []);
     console.log(values,"values : ")
 
+    // function copyTextValue() {
+    //     var text1 = document.getElementById("source").value;
+    //     document.getElementById("destination").value = text1;
+    // }
+    function handleSubmit() {
+        console.log("Selected value:", Amount);
+        // Do something with the selected value, such as submitting it to a server
+      }
+
     const saveUserorder = async (e) =>{
         e.preventDefault();
         try {
             await axios.post('http://localhost:5000/userorder',{
                 Email,
                 Amount,
+                GameID,
+                ZoneID,
             });
             navigate("/order");
         } catch (error){
@@ -45,21 +57,46 @@ const Adduserorder = () => {
                     </div>
                 </div>
                 <div className="field">
-                    <label  className="label"> Amount</label>
+                <label  className="label"> Game ID</label>
+                    <div className="control">
+                        <input type="text" 
+                        className="input" 
+                        value = {GameID}
+                        onChange={(e) => setGameID(e.target.value)}
+                        placeholder='Game ID' 
+                        />
+                    </div>      
+                </div>          
+                <div className="field">
+                <label  className="label"> Zone ID</label>
+                    <div className="control">
+                        <input type="text" 
+                        className="input" 
+                        value = {ZoneID}
+                        onChange={(e) => setZoneID(e.target.value)}
+                        placeholder='Zone ID' 
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label  className="label">Select Amount</label>
                     <div className="control">
                          <div className="select is-link is-full">
-                            <select>
+                            <select value={Amount} onChange={(e)=>setAmount(e.target.value)}>
+                                 <option value="" disabled selected hidden>Please Select...</option>
+
                                 {
-                                    values.map((opt,i)=>(
-                                    <option>{opt.Amount}</option>)
+                                    values.map((opt)=>(
+                                    <option value={opt.Amount}>{opt.Amount}</option>)
                                     )
                                 }
                             </select>
                         </div>
                     </div>
                 </div>
+                
                 <div className="field">
-                    <button type='submit' className="button is-success">Save</button>
+                    <button type='submit' className="button is-success" onClick={handleSubmit}>Save</button>
                 </div>
             </form>
         </div>

@@ -14,9 +14,6 @@ function App() {
     <Router>
       <Routes>
         
-       
-
-
         <Route path="/" exact element={<MainLayout/>}>
           <Route path="dashboard" element={''}/>
           <Route path="user" element={''}/>

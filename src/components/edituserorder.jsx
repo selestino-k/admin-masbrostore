@@ -4,7 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Edituserorder = () => {
     const [Email, setEmail] = useState('');
+    const [GameID,setGameID] = useState('');
+    const [ZoneID,setZoneID] = useState('');
     const [Amount, setAmount] = useState('');
+    const [values, setValues] = useState([]);
+
 
     const navigate = useNavigate();
     const {id} = useParams();
@@ -13,11 +17,17 @@ const Edituserorder = () => {
         getUserById();
     }, []);
 
+    useEffect(() => {
+        fetch("http://localhost:5000/games").then((data)=>data.json()).then((val)=>setValues(val))
+    }, []);
+
     const updateUserorder = async (e) =>{
         e.preventDefault();
         try {
             await axios.patch(`http://localhost:5000/userorder/${id}`,{
                 Email,
+                GameID,
+                ZoneID,
                 Amount,
             });
             navigate('/');
@@ -30,6 +40,8 @@ const Edituserorder = () => {
         const response = await axios.get(`http://localhost:5000/userorder/${id}`);
         setEmail(response.data.Email);
         setAmount(response.data.Amount);
+        setGameID(response.data.GameID);
+        setZoneID(response.data.ZoneID);
     }
 
   return (
@@ -48,15 +60,41 @@ const Edituserorder = () => {
                     </div>
                 </div>
                 <div className="field">
-                    <label  className="label"> Amount</label>
+                <label  className="label"> Game ID</label>
                     <div className="control">
-                        <input 
-                        type="text" 
+                        <input type="text" 
                         className="input" 
-                        value = {Amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        placeholder='Top up Amount'
+                        value = {GameID}
+                        onChange={(e) => setGameID(e.target.value)}
+                        placeholder='Game ID' 
                         />
+                    </div>      
+                </div>          
+                <div className="field">
+                <label  className="label"> Zone ID</label>
+                    <div className="control">
+                        <input type="text" 
+                        className="input" 
+                        value = {ZoneID}
+                        onChange={(e) => setZoneID(e.target.value)}
+                        placeholder='Zone ID' 
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label  className="label">Select Amount</label>
+                    <div className="control">
+                         <div className="select is-link is-full">
+                            <select value={Amount} onChange={(e)=>setAmount(e.target.value)}>
+                                 <option value="" disabled selected hidden>Please Select...</option>
+
+                                {
+                                    values.map((opt)=>(
+                                    <option value={opt.Amount}>{opt.Amount}</option>)
+                                    )
+                                }
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div className="field">
