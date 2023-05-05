@@ -8,12 +8,12 @@ const UserorderList = () => {
     useEffect(() => {
         getUsers();
     }, []);
+    
 
     const getUsers = async () => {
         const response = await axios.get("http://localhost:5000/userorder");
         setUser(response.data);
     }
-
     const deleteUser = async (id) =>{
         try {
             await axios.delete(`http://localhost:5000/userorder/${id}`);
@@ -25,15 +25,15 @@ const UserorderList = () => {
   return (
     <div className="columns mt-5 is-centered">
         <div className="column is-full">
-            <h1>List User </h1>
+        <h3 class="title is-3">User Order List</h3>
             <br />
-            <Link to={`addorder`} className='button is-success'>Add</Link>
-            
+            <Link to={`addorder`} className='button is-success'>Add User Order</Link>
+            <br />
             <br />
             <table className='table is-striped is-fullwidth'>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No</th>
                         <th>Email</th>
                         <th>Game ID</th>
                         <th>Zone ID</th>
@@ -50,13 +50,11 @@ const UserorderList = () => {
                          <td>{userorder.ZoneID}</td>
                          <td>{userorder.Amount}</td>
                          <td>
-                            <Link to={`editorder`} className='button is-small is-info'>Edit</Link>
+                            <Link to={`editorder/${userorder.id}`} className='button is-small is-info'>Edit</Link>
                             <button onClick={()=> deleteUser(userorder.id)} className='button is-small is-danger'>Delete</button>
-
                          </td>
                      </tr>
                     ))}
-                   
                 </tbody>
             </table>
         </div>

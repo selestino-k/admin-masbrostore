@@ -11,7 +11,7 @@ const Edituserorder = () => {
 
 
     const navigate = useNavigate();
-    const {id} = useParams();
+    const {id} = useParams()
 
     useEffect(() => {
         getUserById();
@@ -30,7 +30,7 @@ const Edituserorder = () => {
                 ZoneID,
                 Amount,
             });
-            navigate('/');
+            navigate('/order');
         } catch (error){
             console.log(error);
         }
