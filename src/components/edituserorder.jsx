@@ -90,7 +90,7 @@ const Edituserorder = () => {
 
                                 {
                                     values.map((opt)=>(
-                                    <option value={opt.Amount}>{opt.Amount}</option>)
+                                    <option value={opt.Amount}>{opt.Amount} - {opt.Game}- {opt.Price}</option>)
                                     )
                                 }
                             </select>

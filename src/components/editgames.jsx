@@ -7,14 +7,12 @@ const Editgames = () => {
     const [Price,setPrice] = useState('');
     const [Game,setGame] = useState('');
 
-
     const navigate = useNavigate();
     const {id} = useParams()
 
     useEffect(() => {
         getGamesbyId();
     }, []);
-
 
     const updategames = async (e) =>{
         e.preventDefault();
@@ -35,7 +33,6 @@ const Editgames = () => {
         setAmount(response.data.Amount);
         setGame(response.data.Game);
         setPrice(response.data.Price);
-
     }
 
   return (

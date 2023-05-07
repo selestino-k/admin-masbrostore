@@ -49,6 +49,7 @@ const UserorderList = () => {
                          <td>{userorder.GameID}</td>
                          <td>{userorder.ZoneID}</td>
                          <td>{userorder.Amount}</td>
+
                          <td>
                             <Link to={`editorder/${userorder.id}`} className='button is-small is-info'>Edit</Link>
                             <button onClick={()=> deleteUser(userorder.id)} className='button is-small is-danger'>Delete</button>

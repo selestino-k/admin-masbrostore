@@ -9,9 +9,10 @@ const Adduserorder = () => {
     const [ZoneID,setZoneID] = useState('');
     const [Amount,setAmount] = useState('');
 
-
+    
     const navigate = useNavigate();
 
+    //get  values to select topup amount
     useEffect(() => {
         fetch("http://localhost:5000/games").then((data)=>data.json()).then((val)=>setValues(val))
     }, []);
@@ -26,6 +27,7 @@ const Adduserorder = () => {
         // Do something with the selected value, such as submitting it to a server
       }
 
+      //save user order
     const saveUserorder = async (e) =>{
         e.preventDefault();
         try {
@@ -87,7 +89,7 @@ const Adduserorder = () => {
 
                                 {
                                     values.map((opt)=>(
-                                    <option value={opt.Amount}>{opt.Amount}</option>)
+                                    <option value={opt.Amount}>{opt.Amount} - {opt.Game} - {opt.Price}</option>)
                                     )
                                 }
                             </select>
