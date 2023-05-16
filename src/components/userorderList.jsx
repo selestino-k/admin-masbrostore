@@ -9,19 +9,32 @@ const UserorderList = () => {
         getUsers();
     }, []);
     
-
     const getUsers = async () => {
-        const response = await axios.get("http://localhost:5000/userorder");
+        const response = await axios.get("https://rich-teal-turkey-veil.cyclic.app/userorder");
         setUser(response.data);
     }
     const deleteUser = async (id) =>{
         try {
-            await axios.delete(`http://localhost:5000/userorder/${id}`);
+            await axios.delete(`https://rich-teal-turkey-veil.cyclic.app/userorder/${id}`);
             getUsers();
         } catch (error) {
             console.log(error);
         }
     }
+
+
+    // const getUsers = async () => {
+    //     const response = await axios.get("http://localhost:5000/userorder");
+    //     setUser(response.data);
+    // }
+    // const deleteUser = async (id) =>{
+    //     try {
+    //         await axios.delete(`http://localhost:5000/userorder/${id}`);
+    //         getUsers();
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
   return (
     <div className="columns mt-5 is-centered">
         <div className="column is-full">

@@ -10,12 +10,12 @@ const Gameslist = () => {
     }, []);
 
     const getGames = async () => {
-        const response = await axios.get("http://localhost:5000/games");
+        const response = await axios.get("https://rich-teal-turkey-veil.cyclic.app/games");
         setGames(response.data);
     }
     const deleteGame = async (id) =>{
         try {
-            await axios.delete(`http://localhost:5000/games/${id}`);
+            await axios.delete(`https://rich-teal-turkey-veil.cyclic.app/games/${id}`);
             getGames();
         } catch (error) {
             console.log(error);

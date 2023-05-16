@@ -14,7 +14,7 @@ const Adduserorder = () => {
 
     //get  values to select topup amount
     useEffect(() => {
-        fetch("http://localhost:5000/games").then((data)=>data.json()).then((val)=>setValues(val))
+        fetch("https://rich-teal-turkey-veil.cyclic.app/games").then((data)=>data.json()).then((val)=>setValues(val))
     }, []);
     console.log(values,"values : ")
 
@@ -28,7 +28,7 @@ const Adduserorder = () => {
     const saveUserorder = async (e) =>{
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/userorder',{
+            await axios.post('https://rich-teal-turkey-veil.cyclic.app/userorder',{
                 Email,
                 Amount,
                 GameID,

@@ -18,13 +18,13 @@ const Edituserorder = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/games").then((data)=>data.json()).then((val)=>setValues(val))
+        fetch("https://rich-teal-turkey-veil.cyclic.app/games").then((data)=>data.json()).then((val)=>setValues(val))
     }, []);
 
     const updateUserorder = async (e) =>{
         e.preventDefault();
         try {
-            await axios.patch(`http://localhost:5000/userorder/${id}`,{
+            await axios.patch(`https://rich-teal-turkey-veil.cyclic.app/userorder/${id}`,{
                 Email,
                 GameID,
                 ZoneID,

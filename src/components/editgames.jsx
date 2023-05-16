@@ -17,7 +17,7 @@ const Editgames = () => {
     const updategames = async (e) =>{
         e.preventDefault();
         try {
-            await axios.patch(`http://localhost:5000/games/${id}`,{
+            await axios.patch(`https://rich-teal-turkey-veil.cyclic.app/games/${id}`,{
                 Amount,
                 Price,
                 Game,
@@ -29,7 +29,7 @@ const Editgames = () => {
     }
 
     const getGamesbyId = async () => {
-        const response = await axios.get(`http://localhost:5000/games/${id}`);
+        const response = await axios.get(`https://rich-teal-turkey-veil.cyclic.app/games/${id}`);
         setAmount(response.data.Amount);
         setGame(response.data.Game);
         setPrice(response.data.Price);

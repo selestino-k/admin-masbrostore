@@ -14,7 +14,7 @@ const Addgames = () => {
     const saveGame = async (e) =>{
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/games',{
+            await axios.post('https://rich-teal-turkey-veil.cyclic.app/games',{
                 Amount,
                 Price,
                 Game,
