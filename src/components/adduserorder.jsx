@@ -8,8 +8,8 @@ const Adduserorder = () => {
     const [GameID,setGameID] = useState('');
     const [ZoneID,setZoneID] = useState('');
     const [Amount,setAmount] = useState('');
+    const [Game,setGame] = useState('');
 
-    
     const navigate = useNavigate();
 
     //get  values to select topup amount
@@ -18,10 +18,7 @@ const Adduserorder = () => {
     }, []);
     console.log(values,"values : ")
 
-    // function copyTextValue() {
-    //     var text1 = document.getElementById("source").value;
-    //     document.getElementById("destination").value = text1;
-    // }
+  
     function handleSubmit() {
         console.log("Selected value:", Amount);
         // Do something with the selected value, such as submitting it to a server
@@ -36,6 +33,7 @@ const Adduserorder = () => {
                 Amount,
                 GameID,
                 ZoneID,
+                Game,
             });
             navigate("/order");
         } catch (error){
@@ -92,6 +90,19 @@ const Adduserorder = () => {
                                     <option value={opt.Amount}>{opt.Amount} - {opt.Game} - {opt.Price}</option>)
                                     )
                                 }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="field">
+                    <label  className="label">Select Game</label>
+                    <div className="control">
+                         <div className="select is-link is-full">
+                            <select value={Game} onChange={(e)=>setGame(e.target.value)}>
+                                <option value="" disabled selected hidden>Please Select...</option>
+                                 <option value="PUBGM">PUBGM</option>
+                                 <option value="FF">FF</option>
+                                 <option value="MLBB">MLBB</option>
                             </select>
                         </div>
                     </div>

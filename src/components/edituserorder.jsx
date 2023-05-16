@@ -8,7 +8,7 @@ const Edituserorder = () => {
     const [ZoneID,setZoneID] = useState('');
     const [Amount, setAmount] = useState('');
     const [values, setValues] = useState([]);
-
+    const [Game,setGame] = useState('');
 
     const navigate = useNavigate();
     const {id} = useParams()
@@ -29,6 +29,7 @@ const Edituserorder = () => {
                 GameID,
                 ZoneID,
                 Amount,
+                Game,
             });
             navigate('/order');
         } catch (error){
@@ -42,6 +43,8 @@ const Edituserorder = () => {
         setAmount(response.data.Amount);
         setGameID(response.data.GameID);
         setZoneID(response.data.ZoneID);
+        setGame(response.data.Game);
+
     }
 
   return (
@@ -93,6 +96,19 @@ const Edituserorder = () => {
                                     <option value={opt.Amount}>{opt.Amount} - {opt.Game}- {opt.Price}</option>)
                                     )
                                 }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="field">
+                    <label  className="label">Select Game</label>
+                    <div className="control">
+                         <div className="select is-link is-full">
+                            <select value={Game} onChange={(e)=>setGame(e.target.value)}>
+                                <option value="" disabled selected hidden>Please Select...</option>
+                                 <option value="PUBGM">PUBGM</option>
+                                 <option value="FF">FF</option>
+                                 <option value="MLBB">MLBB</option>
                             </select>
                         </div>
                     </div>

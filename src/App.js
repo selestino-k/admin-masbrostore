@@ -14,6 +14,7 @@ import MainLayout from "./components/mainlayout.jsx";
 
 import "bulma/css/bulma.css";
 import "./stylesheets/home.css";
+import Dashboard from "./components/dashboard.jsx";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <Routes>
         
         <Route exact path="/"  element={<MainLayout/>}>
-          <Route path="dashboard" element={''}/>
+          <Route path="dashboard" element={<Dashboard/>}/>
           <Route path="user" element={''}/>
 
           <Route exact path="order" element={<UserorderList/>}/>
